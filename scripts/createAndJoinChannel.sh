@@ -7,10 +7,10 @@ export FABRIC_CFG_PATH=$PWD/../configtx/
 
 export CORE_PEER_TLS_ENABLED=true
 export CORE_PEER_LOCALMSPID="Org1MSP"
-export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/../ca/crypto/Org1MSP/peers/sample-corpone.propvalchain.com/tls/ca.crt
-export CORE_PEER_MSPCONFIGPATH=${PWD}/../ca/crypto/Org1MSP/users/admin.propvalchain.org1.com/msp
-export CORE_PEER_ADDRESS=localhost:9051
-export ORDERER_CA=../ca/crypto/orderers/sample-orderer.propvalchain.com/msp/tlscacerts/tlsca.sample-orderer.propvalchain.com-cert.pem
+export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/../ca/crypto/Org1MSP/peers/peer0.ibrahim.com/tls/ca.crt
+export CORE_PEER_MSPCONFIGPATH=${PWD}/../ca/crypto/Org1MSP/users/admin.ibrahim.com/msp
+export CORE_PEER_ADDRESS=peer0.ibrahim.com:9051
+export ORDERER_CA=../ca/crypto/orderers/orderer0.ibrahim.com/msp/tlscacerts/tlsca.orderer0.ibrahim.com-cert.pem
 
 CHANNEL_NAME=$1
 chaincodePath=../chaincodes/ChaincodeCommon
@@ -23,7 +23,7 @@ configtxgen -profile TwoOrgsApplicationGenesis -outputCreateChannelTx ../channel
 
 sleep 5
 
-peer channel create -o localhost:7050 -c $CHANNEL_NAME -f ../channel-artifacts/$CHANNEL_NAME.tx --outputBlock ../channel-artifacts/$CHANNEL_NAME.block --tls --cafile $ORDERER_CA
+peer channel create -o orderer0.ibrahim.com:7050 -c $CHANNEL_NAME -f ../channel-artifacts/$CHANNEL_NAME.tx --outputBlock ../channel-artifacts/$CHANNEL_NAME.block --tls --cafile $ORDERER_CA
 
 sleep 5
 
@@ -33,8 +33,4 @@ sleep 2
 
 peer channel list
 peer channel getinfo -c $CHANNEL_NAME
-
-
-#./installChaincode.sh $CHANNEL_NAME $chaincodePath $chaincodeName $version $sequence "peer0.propvalchain.org1.com" "7051" "admin.propvalchain.org1.com" $CORE_PEER_LOCALMSPID
-
 echo "done!"

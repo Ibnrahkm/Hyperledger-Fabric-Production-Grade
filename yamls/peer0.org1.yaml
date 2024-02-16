@@ -1,4 +1,4 @@
-# Copyright IBM Corp. All Rights Reserved.
+ # Copyright IBM Corp. All Rights Reserved.
 #
 # SPDX-License-Identifier: Apache-2.0
 #
@@ -6,7 +6,7 @@
 version: '2'
 
 volumes:
-  sample-corpone.propvalchain.com:
+  peer0.ibrahim.com:
 
 networks:
   test:
@@ -27,8 +27,8 @@ services:
     networks:
       - test
 
-  sample-corpone.propvalchain.com:
-    container_name: sample-corpone.propvalchain.com
+  peer0.ibrahim.com:
+    container_name: peer0.ibrahim.com
     image: hyperledger/fabric-peer:2.2.0
     environment:
       #Generic peer variables
@@ -50,14 +50,14 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=adminpw
       - CORE_PEER_ADDRESSAUTODETECT=true
       - CORE_PEER_PROFILE_ENABLED=true
-      - CORE_PEER_COMMITTER_LEDGER_ORDERER=sample-orderer.propvalchain.com:7050
+      - CORE_PEER_COMMITTER_LEDGER_ORDERER=orderer0.ibrahim.com:7050
       - CORE_PEER_TLS_CERT_FILE=/etc/hyperledger/fabric/tls/server.crt
       - CORE_PEER_TLS_KEY_FILE=/etc/hyperledger/fabric/tls/server.key
       - CORE_PEER_TLS_ROOTCERT_FILE=/etc/hyperledger/fabric/tls/ca.crt
-      - CORE_PEER_ID=sample-corpone.propvalchain.com
-      - CORE_PEER_ADDRESS=sample-corpone.propvalchain.com:9051
-      - CORE_PEER_GOSSIP_BOOTSTRAP=sample-corpone.propvalchain.com:9051
-      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=sample-corpone.propvalchain.com:9051
+      - CORE_PEER_ID=peer0.ibrahim.com
+      - CORE_PEER_ADDRESS=peer0.ibrahim.com:9051
+      - CORE_PEER_GOSSIP_BOOTSTRAP=peer0.ibrahim.com:9051
+      - CORE_PEER_GOSSIP_EXTERNALENDPOINT=peer0.ibrahim.com:9051
       - CORE_PEER_LOCALMSPID=Org1MSP
       - CORE_PEER_MSPCONFIGPATH=/etc/hyperledger/fabric/msp
       - CORE_PEER_LISTENADDRESS=0.0.0.0:9051
@@ -65,18 +65,14 @@ services:
       - CORE_PEER_GOSSIP_ORGLEADER=true
     volumes:
         - /var/run/docker.sock:/host/var/run/docker.sock
-        - ../ca/crypto/Org1MSP/peers/sample-corpone.propvalchain.com/msp:/etc/hyperledger/fabric/msp
-        - ../ca/crypto/Org1MSP/peers/sample-corpone.propvalchain.com/tls:/etc/hyperledger/fabric/tls
-        - ../volumes/peers/sample-corpone.propvalchain.com:/var/hyperledger/production
+        - ../ca/crypto/Org1MSP/peers/peer0.ibrahim.com/msp:/etc/hyperledger/fabric/msp
+        - ../ca/crypto/Org1MSP/peers/peer0.ibrahim.com/tls:/etc/hyperledger/fabric/tls
+        - ../volumes/peers/peer0.ibrahim.com:/var/hyperledger/production
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
       - 9051:9051
     depends_on:
       - couchdb0
-#    extra_hosts:
- #     - "sample-orderer.propvalchain.com:18.133.236.55"
-  #    - "ca.propvalchain.com:18.133.236.55"
-
     networks:
       - test

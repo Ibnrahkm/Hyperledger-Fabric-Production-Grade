@@ -4,5 +4,3 @@
 sudo rm -rf ../ca/crypto ../ca/ca-server ../volumes
  echo "network down successfully"
 
-
-

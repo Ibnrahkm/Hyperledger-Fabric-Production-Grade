@@ -10,7 +10,7 @@ export FABRIC_CA_SERVER_PATH=../ca-server
 #enroll admin for ca to operate ca
 echo "ca server is deploying..."
 sleep 5
-fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 --csr.hosts '*.propvalchain.com,localhost' --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem 
+fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 --csr.hosts ibrahim.com --csr.hosts localhost --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem 
 
 cd $FABRIC_CA_CLIENT_HOME/msp
 
@@ -20,16 +20,16 @@ echo "
 NodeOUs:
   Enable: true
   ClientOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: client
   PeerOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: peer
   AdminOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: orderer
     " > config.yaml
 

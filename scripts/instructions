@@ -1,16 +1,21 @@
+### machine 1
 
-
-1. sudo ./runCA.sh capropvalchain admin adminpw ../yamls/ca.yaml
+1. sudo ./runCA.sh caibrahim admin adminpw ../yamls/ca.yaml
 2. sudo ./generateCryptos.sh (for fresh installation)
 3. sudo ./createGenesisBlock.sh (for fresh installation)
-4. sudo ./runDockerContainer.sh ../yamls/orderer.yaml 
-5. sudo chmod -R a+wrx ../
-6. sudo ./runDockerContainer.sh ../yamls/peer0.org1.yaml
-7. sudo ./runDockerContainer.sh ../yamls/peer0.org2.yaml
-8. sudo ./createAndJoinChannel.sh channelcorp
-9. sudo ./joinChannelByOrg2.sh channelcorp
-10. sudo apt install jq (first time only)
-11. sudo ./updateAnchorPeerForChannelOnOrg1Org2.sh channelcorp
-12. ./installChaincode.sh basic ../chaincode/javascript/ channelcorp 1 node
-13. ./invokeChaincodeTest.sh basic channelcorp
-14. ./queryChaincodeTest.sh basic channelcorp
+4. sudo ./runDockerContainer.sh ../yamls/orderer.yaml
+5. sudo ./runDockerContainer.sh ../yamls/peer0.org1.yaml
+6. sudo ./createAndJoinChannel.sh channelcorp 
+5. sudo chmod -R a+wrx <rootfolder>
+7. sudo apt install jq (first time only)
+7. sudo ./updateAnchorPeerForChannelOnOrg1.sh channelcorp
+
+
+### machine 2
+
+1. copy ca folder from machine 1
+2. sudo chmod -R a+wrx <rootfolder>
+4. sudo ./runDockerContainer.sh ../yamls/peer0.org2.yaml
+6. sudo ./joinChannelByOrg2.sh channelcorp
+7. sudo apt install jq (first time only)
+7. sudo ./updateAnchorPeerForChannelOnOrg2.sh channelcorp

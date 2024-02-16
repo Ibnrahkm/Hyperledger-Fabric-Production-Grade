@@ -1,32 +1,32 @@
 #!/bin/bash
 
-./registerOrderer.sh capropvalchain sample-orderer.propvalchain.com adminpw 
+./registerOrderer.sh caibrahim orderer0.ibrahim.com adminpw 
 
-./enrollOrderer.sh capropvalchain sample-orderer.propvalchain.com adminpw sample-orderer.propvalchain.com
+./enrollOrderer.sh caibrahim orderer0.ibrahim.com adminpw orderer0.ibrahim.com
 
-./registerPeer.sh capropvalchain sample-corpone.propvalchain.com adminpw
+./registerPeer.sh caibrahim peer0.ibrahim.com adminpw
 
-./enrollPeer.sh capropvalchain sample-corpone.propvalchain.com adminpw Org1MSP sample-corpone.propvalchain.com
+./enrollPeer.sh caibrahim peer0.ibrahim.com adminpw Org1MSP peer0.ibrahim.com
 
-./registerPeer.sh capropvalchain sample-corptwo.propvalchain.com adminpw
+./registerPeer.sh caibrahim peer0.khalil.com adminpw
 
-./enrollPeer.sh capropvalchain sample-corptwo.propvalchain.com adminpw Org2MSP sample-corptwo.propvalchain.com
+./enrollPeer.sh caibrahim peer0.khalil.com adminpw Org2MSP peer0.khalil.com
 
-./registerAdmin.sh capropvalchain admin.propvalchain.org1.com adminpw 
+./registerAdmin.sh caibrahim admin.ibrahim.com adminpw 
 
-./enrollAdmin.sh capropvalchain admin.propvalchain.org1.com adminpw Org1MSP admin.propvalchain.org1.com
+./enrollAdmin.sh caibrahim admin.ibrahim.com adminpw Org1MSP admin.ibrahim.com
 
-./registerAdmin.sh capropvalchain admin.propvalchain.org2.com adminpw 
+./registerAdmin.sh caibrahim admin.khalil.com adminpw 
 
-./enrollAdmin.sh capropvalchain admin.propvalchain.org2.com adminpw Org2MSP admin.propvalchain.org2.com
+./enrollAdmin.sh caibrahim admin.khalil.com adminpw Org2MSP admin.khalil.com
 
-./registerUser.sh capropvalchain user.propvalchain.org1.com userpw 
+./registerUser.sh caibrahim user.ibrahim.com userpw 
 
-./enrollUser.sh capropvalchain user.propvalchain.org1.com userpw Org1MSP user.propvalchain.org1.com
+./enrollUser.sh caibrahim user.ibrahim.com userpw Org1MSP user.ibrahim.com
 
 
-./registerUser.sh capropvalchain user.propvalchain.org2.com userpw 
+./registerUser.sh caibrahim user.khalil.com userpw 
 
-./enrollUser.sh capropvalchain user.propvalchain.org2.com userpw Org2MSP user.propvalchain.org2.com
+./enrollUser.sh caibrahim user.khalil.com userpw Org2MSP user.khalil.com
 
 echo "cryptos for blockchain generated"

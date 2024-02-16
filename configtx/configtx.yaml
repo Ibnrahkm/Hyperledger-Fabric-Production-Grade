@@ -25,7 +25,7 @@ Organizations:
         ID: OrdererMSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir:  ../ca/crypto/orderers/sample-orderer.propvalchain.com/msp
+        MSPDir:  ../ca/crypto/orderers/orderer0.ibrahim.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -42,7 +42,7 @@ Organizations:
                 Rule: "OR('OrdererMSP.admin')"
 
         OrdererEndpoints:
-            - sample-orderer.propvalchain.com:7050
+            - orderer0.ibrahim.com:7050
 
     - &Org1
         # DefaultOrg defines the organization which is used in the sampleconfig
@@ -52,7 +52,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org1MSP
 
-        MSPDir: ../ca/crypto/Org1MSP/peers/sample-corpone.propvalchain.com/msp
+        MSPDir: ../ca/crypto/Org1MSP/peers/peer0.ibrahim.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -80,7 +80,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Org2MSP
 
-        MSPDir: ../ca/crypto/Org2MSP/peers/sample-corptwo.propvalchain.com/msp
+        MSPDir: ../ca/crypto/Org2MSP/peers/peer0.khalil.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -210,14 +210,14 @@ Orderer: &OrdererDefaults
     # as TLS validation.  The preferred way to specify orderer addresses is now
     # to include the OrdererEndpoints item in your org definition
     Addresses:
-        - sample-orderer.propvalchain.com:7050
+        - orderer0.ibrahim.com:7050
 
     EtcdRaft:
         Consenters:
-        - Host: sample-orderer.propvalchain.com
+        - Host: orderer0.ibrahim.com
           Port: 7050
-          ClientTLSCert: ../ca/crypto/orderers/sample-orderer.propvalchain.com/tls/server.crt
-          ServerTLSCert: ../ca/crypto/orderers/sample-orderer.propvalchain.com/tls/server.crt
+          ClientTLSCert: ../ca/crypto/orderers/orderer0.ibrahim.com/tls/server.crt
+          ServerTLSCert: ../ca/crypto/orderers/orderer0.ibrahim.com/tls/server.crt
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s

@@ -6,15 +6,15 @@
 version: '2'
 
 volumes:
-  sample-orderer.propvalchain.com:
+  orderer0.ibrahim.com:
 
 networks:
   test:
 
 services:
 
-  sample-orderer.propvalchain.com:
-    container_name: sample-orderer.propvalchain.com
+  orderer0.ibrahim.com:
+    container_name: orderer0.ibrahim.com
     image: hyperledger/fabric-orderer:2.2.0
     environment:
       - FABRIC_LOGGING_SPEC=INFO
@@ -39,14 +39,10 @@ services:
     command: orderer
     volumes:
         - ../volumes/orderer/system-genesis-block/genesis.block:/var/hyperledger/orderer/orderer.genesis.block
-        - ../ca/crypto/orderers/sample-orderer.propvalchain.com/msp:/var/hyperledger/orderer/msp
-        - ../ca/crypto/orderers/sample-orderer.propvalchain.com/tls/:/var/hyperledger/orderer/tls
+        - ../ca/crypto/orderers/orderer0.ibrahim.com/msp:/var/hyperledger/orderer/msp
+        - ../ca/crypto/orderers/orderer0.ibrahim.com/tls/:/var/hyperledger/orderer/tls
         - ../volumes/orderer:/var/hyperledger/production/orderer
     ports:
       - 7050:7050
-#    extra_hosts:
- #     - "sample-corpone.propvalchain.com:18.168.150.145"
-  #    - "sample-corptwo.propvalchain.com:18.168.150.145"
-
     networks:
       - test

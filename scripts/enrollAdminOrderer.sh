@@ -10,9 +10,9 @@ export FABRIC_CA_SERVER_PATH=../ca-server
 
 
 
-fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 -M ../crypto/orderers/$4/users/$5/msp --csr.hosts '$4,*.propvalchain.com,localhost' --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem
+fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 -M ../crypto/orderers/$4/users/$5/msp --csr.hosts $4 --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem
 
-fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 -M ../crypto/orderers/$4/users/$5/tls --enrollment.profile tls --csr.hosts '$4,*.propvalchain.com,localhost' --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem
+fabric-ca-client enroll -u https://$2:$3@localhost:7054 --caname $1 -M ../crypto/orderers/$4/users/$5/tls --enrollment.profile tls --csr.hosts $4 --tls.certfiles $FABRIC_CA_SERVER_PATH/tls-cert.pem
 
 
 
@@ -29,16 +29,16 @@ echo "
 NodeOUs:
   Enable: true
   ClientOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: client
   PeerOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: peer
   AdminOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: admin
   OrdererOUIdentifier:
-    Certificate: cacerts/localhost-7054-capropvalchain.pem
+    Certificate: cacerts/localhost-7054-caibrahim.pem
     OrganizationalUnitIdentifier: orderer
     " > config.yaml
 

@@ -10,19 +10,18 @@ networks:
 
 services:
 
-  ca.propvalchain.com:
+  ca.ibrahim.com:
     image: hyperledger/fabric-ca:1.4.7
     environment:
       - FABRIC_CA_HOME=/etc/hyperledger/fabric-ca-server
-      - FABRIC_CA_SERVER_CA_NAME=capropvalchain
+      - FABRIC_CA_SERVER_CA_NAME=caibrahim
       - FABRIC_CA_SERVER_TLS_ENABLED=true
       - FABRIC_CA_SERVER_PORT=7054
-      - FABRIC_CA_SERVER_CSR_HOSTS=*.propvalchain.com,localhost,0.0.0.0
     ports:
       - "7054:7054"
     command: sh -c 'fabric-ca-server start -b admin:adminpw -d'
     volumes:
       - ../ca/ca-server:/etc/hyperledger/fabric-ca-server
-    container_name: ca.propvalchain.com
+    container_name: ca.ibrahim.com
     networks:
       - test
